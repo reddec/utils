@@ -56,7 +56,7 @@ find "$POOL"/ -type f | while read file; do
         echo "$file"
         filename=$(basename "$file")
         extension="${filename##*.}"
-        if [ "1$extension" == "1" ]; then
+        if [ "1$extension" == "1" || "$extension" == "$filename" ]; then
             extension="main"
         fi        
         
