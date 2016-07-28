@@ -56,10 +56,9 @@ find "$POOL"/ -type f | while read file; do
         echo "$file"
         filename=$(basename "$file")
         extension="${filename##*.}"
-        if [ "1$extension" == "1" || "$extension" == "$filename" ]; then
+        if [ "1$extension" == "1" ] || [ "$extension" == "$filename" ]; then
             extension="main"
         fi        
-        
         echo "Found $file"                       | ts "$TIME [SYS]" >> "$LOGS/$extension.log"
         if test -x "$HANDLERS_DIR/$extension"; then
             echo "Handler: $HANDLERS_DIR/$extension" | ts "$TIME [SYS]" >> "$LOGS/$extension.log"
